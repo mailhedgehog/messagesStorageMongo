@@ -29,7 +29,7 @@ func (repo *mongoRoomsRepo) List(offset, limit int) ([]contracts.Room, error) {
 		var result bson.M
 		err := cursor.Decode(&result)
 		logger.PanicIfError(err)
-		results = append(results, result["_id"].(string))
+		results = append(results, contracts.Room(result["_id"].(string)))
 	}
 
 	logger.PanicIfError(cursor.Err())

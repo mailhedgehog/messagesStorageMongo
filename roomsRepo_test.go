@@ -19,11 +19,11 @@ func TestRoomsCount(t *testing.T) {
 			ID: id,
 		}
 
-		storedId, err := storage.MessagesRepo(room + fmt.Sprint(i)).Store(msg)
+		storedId, err := storage.MessagesRepo(contracts.Room(room + fmt.Sprint(i))).Store(msg)
 		(*gounit.T)(t).AssertEqualsString(string(id), string(storedId))
 		(*gounit.T)(t).AssertNotError(err)
 
-		storage.MessagesRepo(room + fmt.Sprint(i)).Store(msg)
+		storage.MessagesRepo(contracts.Room(room + fmt.Sprint(i))).Store(msg)
 	}
 
 	(*gounit.T)(t).AssertEqualsInt(15, storage.RoomsRepo().Count())
@@ -40,18 +40,18 @@ func TestRoomsDelete(t *testing.T) {
 			ID: id,
 		}
 
-		storedId, err := storage.MessagesRepo(room + fmt.Sprint(i)).Store(msg)
+		storedId, err := storage.MessagesRepo(contracts.Room(room + fmt.Sprint(i))).Store(msg)
 		(*gounit.T)(t).AssertEqualsString(string(id), string(storedId))
 		(*gounit.T)(t).AssertNotError(err)
 
-		storage.MessagesRepo(room + fmt.Sprint(i)).Store(msg)
+		storage.MessagesRepo(contracts.Room(room + fmt.Sprint(i))).Store(msg)
 	}
 
 	(*gounit.T)(t).AssertEqualsInt(15, storage.RoomsRepo().Count())
 
-	(*gounit.T)(t).AssertNotError(storage.RoomsRepo().Delete(room + "2"))
-	(*gounit.T)(t).AssertNotError(storage.RoomsRepo().Delete(room + "3"))
-	(*gounit.T)(t).AssertNotError(storage.RoomsRepo().Delete(room + "4"))
+	(*gounit.T)(t).AssertNotError(storage.RoomsRepo().Delete(contracts.Room(room + "2")))
+	(*gounit.T)(t).AssertNotError(storage.RoomsRepo().Delete(contracts.Room(room + "3")))
+	(*gounit.T)(t).AssertNotError(storage.RoomsRepo().Delete(contracts.Room(room + "4")))
 
 	(*gounit.T)(t).AssertEqualsInt(12, storage.RoomsRepo().Count())
 }
@@ -67,11 +67,11 @@ func TestRoomsList(t *testing.T) {
 			ID: id,
 		}
 
-		storedId, err := storage.MessagesRepo(room + fmt.Sprint(i)).Store(msg)
+		storedId, err := storage.MessagesRepo(contracts.Room(room + fmt.Sprint(i))).Store(msg)
 		(*gounit.T)(t).AssertEqualsString(string(id), string(storedId))
 		(*gounit.T)(t).AssertNotError(err)
 
-		storage.MessagesRepo(room + fmt.Sprint(i)).Store(msg)
+		storage.MessagesRepo(contracts.Room(room + fmt.Sprint(i))).Store(msg)
 	}
 
 	rooms, err := storage.RoomsRepo().List(2, 6)

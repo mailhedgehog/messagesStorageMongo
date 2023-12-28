@@ -28,7 +28,7 @@ func (c *storageContext) roomName(room contracts.Room) string {
 	if len(room) <= 0 {
 		room = "_default"
 	}
-	return room
+	return string(room)
 }
 
 type Mongo struct {

@@ -3,7 +3,7 @@ module github.com/mailhedgehog/messagesStorageMongo
 go 1.19
 
 require (
-	github.com/mailhedgehog/contracts v1.0.1
+	github.com/mailhedgehog/contracts v1.0.2
 	github.com/mailhedgehog/email v1.0.0
 	github.com/mailhedgehog/gounit v1.0.0
 	github.com/mailhedgehog/logger v1.0.0
@@ -25,5 +25,3 @@ require (
 	golang.org/x/sync v0.0.0-20220722155255-886fb9371eb4 // indirect
 	golang.org/x/text v0.14.0 // indirect
 )
-
-replace github.com/mailhedgehog/contracts v1.0.1 => ../contracts
